@@ -1,23 +1,24 @@
 package org.example
-
+import java.util.Scanner
+val scanner = Scanner(System.`in`)
 fun llegirModel(): Int {
     println("Selecciona el model:")
     println("1. Volkswagen Grand California: model bàsic.")
     println("2. Volkswagen Grand California: model Camper Full Equip.")
-    return readlnOrNull()?.toInt() ?: 0
+    return scanner.nextInt()
 }
 
 fun llegirAnys(): Int {
     println("Quants anys te el model?")
-    return readlnOrNull()?.toInt() ?: 0
+    return scanner.nextInt()
 }
 
 fun llegirKmPneumatics(): Long {
     println("Quants kilòmetres tenen els teus pneumàtics?")
-    return readlnOrNull()?.toLong() ?: 0
+    return scanner.nextLong()
 }
 
 fun llegirPortabicis(): Boolean {
     println("Disposa de portabicis? Si us plau, responeu 'true' en cas afirmatiu o 'false' en cas negatiu.")
-    return readlnOrNull().toBoolean()
+    return scanner.nextBoolean()
 }
