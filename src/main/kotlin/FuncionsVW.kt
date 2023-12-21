@@ -1,14 +1,15 @@
 package org.example
 
-fun calcularPreuBase(model: String): Double {
-    val preuBaseNormal = 73490.0
-    val preuBaseCamper = preuBaseNormal + 20000.0
+fun calcularPreuBase(model: Int): Double {
+    val preuBaseBasic = 73490.0
+    val preuBaseCamper = preuBaseBasic + 20000.0
 
-    return if (model.equals("normal", ignoreCase = true)) preuBaseNormal
-    else preuBaseCamper
+    return if (model == 1) preuBaseBasic
+    else if (model == 2) preuBaseCamper
+    else preuBaseBasic
 }
 
-fun calcularPreuActual(preuBase: Double, kmNeumaticos: Long, anys:Int, tienePortabicis:Boolean): Double {
+fun calcularPreuActual(preuBase: Double, kmPneumatics: Long, anys:Int, tienePortabicis:Boolean): Double {
     val portabicis: Float = if (tienePortabicis) 250.0f
                     else 0.0f
     val reduccioMenys6Anys = 0.00001f
@@ -19,15 +20,15 @@ fun calcularPreuActual(preuBase: Double, kmNeumaticos: Long, anys:Int, tienePort
         anys > 10 -> reduccioMes10Anys
         else -> reduccioMenys6Anys
     }
-    val reduccioNeumaticos5000 = 0.0f
-    val reduccioNeumaticos10000 = 200.0f
-    val reduccioNeumaticosMes10000 = 300.0f
+    val reduccioPneumatics5000 = 0.0f
+    val reduccioPneumatics10000 = 200.0f
+    val reduccioPneumaticsMes10000 = 300.0f
 
-    val depreciacio = preuBase * depreciacioPerKm * kmNeumaticos
+    val depreciacio = preuBase * depreciacioPerKm * kmPneumatics
     val reduccioNeumaticos = when {
-        kmNeumaticos < 5000.0f -> reduccioNeumaticos5000
-        kmNeumaticos < 10000.0f -> reduccioNeumaticos10000
-        else -> reduccioNeumaticosMes10000
+        kmPneumatics < 5000.0f -> reduccioPneumatics5000
+        kmPneumatics < 10000.0f -> reduccioPneumatics10000
+        else -> reduccioPneumaticsMes10000
     }
 
     return preuBase - depreciacio - reduccioNeumaticos + portabicis
