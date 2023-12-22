@@ -297,9 +297,13 @@ fun readFloat(pMessageIn: String
     return outputValue
 }
 
-/*
-Función añadida por @jacomar y creada a partir de las propuestas de @raimon.izard para llevar a cabo un control
-de errores en la entrada de datos de tipo 'Long'.
+/**
+ * This method can be used to read a Long value from the user through keyboard using java.util.Scanner
+ * @author jacomarGS, based on code created by @raimon.izard
+ * @since 21/12/2023
+ * @param pMessageIn Input message to be shown to the user
+ * @param pMessageErrorDT Data type error message to be shown to the user
+ * @return outputValue Output value
  */
 fun readLong(pMessageIn: String
             , pMessageErrorDT: String
